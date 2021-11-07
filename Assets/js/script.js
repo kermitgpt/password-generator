@@ -23,52 +23,74 @@ function writePassword() {
 
     //logic below to make sure user selects password from appropriate range
 
-  function pwLength(num) {
-    if (num >= 8 && num <= 128) {
-      return num;
-    } else {
-      alert("Number must be between 8 and 128! Please enter valid number.");
+    function pwLength(num) {
+      if (num >= 8 && num <= 128) {
+        return num;
+      } else {
+        alert("Number must be between 8 and 128! Please enter valid number.");
+      }
     }
-  }
 
-  if (!password.pwLower && !password.pwUpper && !password.pwNum && !password.pwSpecial) {
-    alert("One of the four items must be chosen: Lowercase, Uppercase, Number, or Special Character.");
-  }
+    if (
+      !password.pwLower &&
+      !password.pwUpper &&
+      !password.pwNum &&
+      !password.pwSpecial
+    ) {
+      alert(
+        "One of the four items must be chosen: Lowercase, Uppercase, Number, or Special Character."
+      );
+    }
 
-  //Log what choices user password is going to contain based on above prompts/confirms
-  console.log("Lowercase: " password.pwLower);
-  console.log("Uppercase: " password.pwUpper);
-  console.log("Number: " password.pwNum);
-  console.log("Special: " password.pwSpecial);
-  console.log(`Your password is ${password.length} characters long.`);
+    //Log what choices user password is going to contain based on above prompts/confirms
+    console.log(`"Lowercase: " ${password.pwLower}`);
+    console.log(`Uppercase: ${password.pwUpper}`);
+    console.log(`Number: ${password.pwNum}`);
+    console.log(`Special: ${password.pwSpecial}`);
+    console.log(`Your password is ${password.length} characters long.`);
 
-  var lowerRan = "1,2,3,4,5,6,7,8,9,0,";
-  var upperRan = "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,";
-  var numberRan = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,";
-  var specialRan = "!,@,#,$,%,^,&,*,(,),<,>,?,{,},],[,:,;,";
+    var lowerRan = "1,2,3,4,5,6,7,8,9,0,";
+    var upperRan = "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,";
+    var numberRan = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,";
+    var specialRan = "!,@,#,$,%,^,&,*,(,),<,>,?,{,},],[,:,;,";
 
-  let charSet = "";
+    let charSet = "";
 
+    if (password.pwLower === true) {
+      charSet = charSet + lowerRan;
+    }
+    if (password.pwUpper === true) {
+      charSet = charSet + upperRan;
+    }
+    if (password.pwNum === true) {
+      charSet = charSet + numberRan;
+    }
+    if (password.pwSpecial === true) {
+      charSet = charSet + specialRan;
+    }
 
-  if (password.pwLower === true) {
-    charSet = charSet + lowerRan;
-  }
-  if (password.pwUpper === true) {
-    charSet = charSet + upperRan;
-  }
-  if (password.pwNum === true) {
-    charSet = charSet + numberRan;
-  }
-  if (password.pwSpecial === true) {
-    charSet = charSet + specialRan;
-  }
-  
+    //logs which characters are going into final character set for password generator
+    console.log(charSet);
 
-  console.log(charSet);
+    //splits string of random chars into string that selects each piece of char array selected
 
+    finalCharset = charSet.split(",").filter((item) => item);
 
+    console.log(finalCharset);
+
+    let generatedPassword = "";
+    for (let i = 0; i < password.length; i++) {
+      getPass = Math.floor(Math.random() * finalCharset.length);
+      generatedPassword += finalCharset[getPass];
+    }
+
+    password = generatedPassword;
+
+    return password;
   }
 }
+
+generateBtn.addEventListener("click", writePassword);
 
 /* const randomFunc = {
   lower: getLower,
@@ -198,7 +220,7 @@ generatePassword(); */
 //create generate password function
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+/* generateBtn.addEventListener("click", writePassword); */
 
 //use length of the array, in the same way math.random on the array of get lower, get num, get special. Use
 
