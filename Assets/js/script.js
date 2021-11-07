@@ -35,15 +35,38 @@ function writePassword() {
     alert("One of the four items must be chosen: Lowercase, Uppercase, Number, or Special Character.");
   }
 
-
+  //Log what choices user password is going to contain based on above prompts/confirms
   console.log("Lowercase: " password.pwLower);
   console.log("Uppercase: " password.pwUpper);
   console.log("Number: " password.pwNum);
   console.log("Special: " password.pwSpecial);
   console.log(`Your password is ${password.length} characters long.`);
 
+  var lowerRan = "1,2,3,4,5,6,7,8,9,0,";
+  var upperRan = "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,";
+  var numberRan = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,";
+  var specialRan = "!,@,#,$,%,^,&,*,(,),<,>,?,{,},],[,:,;,";
 
+  let charSet = "";
+
+
+  if (password.pwLower === true) {
+    charSet = charSet + lowerRan;
+  }
+  if (password.pwUpper === true) {
+    charSet = charSet + upperRan;
+  }
+  if (password.pwNum === true) {
+    charSet = charSet + numberRan;
+  }
+  if (password.pwSpecial === true) {
+    charSet = charSet + specialRan;
+  }
   
+
+  console.log(charSet);
+
+
   }
 }
 
