@@ -1,4 +1,29 @@
-const randomFunc = {
+var generateBtn = document.querySelector("#generate");
+
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+
+  function generatePassword() {
+    alert("Please generate a password between 8 and 128 characters.");
+
+    var passwrod = {
+      pwLower: confirm("Do you want to add lowercase characters to password?"),
+      pwUpper: confirm("Do you want to add uppercase characters to password?"),
+      pwNum: confirm("Do you want to add numbers to passwrod?"),
+      pwSpecial: confirm("Do you want to add special characters to password?"),
+      length: pwLength(
+        parseInt(
+          prompt("Choose a character count between 8 and 128 characters")
+        )
+      ),
+    };
+  }
+}
+
+/* const randomFunc = {
   lower: getLower,
   upper: getUpper,
   number: getNum,
@@ -82,7 +107,7 @@ function getSpecial() {
   } else {
     return false;
   }
-}
+} */
 
 //Start pw generation, filter out checked & unchecked regarding upper/lower/number/special.
 //Loop over length for each function that was checked
@@ -120,15 +145,8 @@ generatePassword(); */
 //Driver function. Check each condition, generate some sort of for loop,
 
 // Assignment Code
-var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-}
 
 //create generate password function
 
