@@ -1,9 +1,16 @@
-var options;
+const randomFunc = {
+  lower: getLower,
+  upper: getUpper,
+  number: getNum,
+  special: getSpecial,
+};
 
-var pwLower;
-var pwUpper;
-var pwNum;
-var pwSpecial;
+const truthyFunc = function () {
+  pwLower ? true : false;
+  pwUpper ? true : false;
+  pwNum ? true : false;
+  pwSpecial ? true : false;
+};
 
 var pwLength = function () {
   var userInput = prompt(
@@ -16,6 +23,36 @@ var pwLength = function () {
     return userInput;
   }
 };
+
+pwLength();
+
+var pwLower = function () {
+  var lowerPrompt = confirm("Do you want to add lower case characters?");
+  console.log(lowerPrompt);
+};
+
+pwLower();
+
+var pwUpper = function () {
+  var upperPrompt = confirm("Do you want to add upper case characters?");
+  console.log(upperPrompt);
+};
+
+pwUpper();
+
+var pwNum = function () {
+  var numberPrompt = confirm("Do you want to add numeric characters?");
+  console.log(numberPrompt);
+};
+
+pwNum();
+
+var pwSpecial = function () {
+  var specialPrompt = confirm("Do you want to add special characters?");
+  console.log(specialPrompt);
+};
+
+pwSpecial();
 
 function getLower() {
   if (pwLower == true) {
@@ -51,7 +88,7 @@ function getSpecial() {
 //Loop over length for each function that was checked
 //Adds final password after doing all of this
 
-function generatePassword() {
+/* function generatePassword() {
   pwLength();
 
   var pwLower = confirm("Do you want to add lower case characters?");
@@ -76,7 +113,7 @@ function generatePassword() {
   }
 }
 
-generatePassword();
+generatePassword(); */
 
 /* generatePassword(); */
 
