@@ -9,7 +9,7 @@ function writePassword() {
   function generatePassword() {
     alert("Please generate a password between 8 and 128 characters.");
 
-    var passwrod = {
+    var password = {
       pwLower: confirm("Do you want to add lowercase characters to password?"),
       pwUpper: confirm("Do you want to add uppercase characters to password?"),
       pwNum: confirm("Do you want to add numbers to passwrod?"),
@@ -20,6 +20,30 @@ function writePassword() {
         )
       ),
     };
+
+    //logic below to make sure user selects password from appropriate range
+
+  function pwLength(num) {
+    if (num >= 8 && num <= 128) {
+      return num;
+    } else {
+      alert("Number must be between 8 and 128! Please enter valid number.");
+    }
+  }
+
+  if (!password.pwLower && !password.pwUpper && !password.pwNum && !password.pwSpecial) {
+    alert("One of the four items must be chosen: Lowercase, Uppercase, Number, or Special Character.");
+  }
+
+
+  console.log("Lowercase: " password.pwLower);
+  console.log("Uppercase: " password.pwUpper);
+  console.log("Number: " password.pwNum);
+  console.log("Special: " password.pwSpecial);
+  console.log(`Your password is ${password.length} characters long.`);
+
+
+  
   }
 }
 
